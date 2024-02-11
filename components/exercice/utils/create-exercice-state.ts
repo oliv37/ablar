@@ -6,6 +6,6 @@ import fraDptData from "@/data/fra-dpt";
 
 export default function createExerciceState(): AbstractExerciceState {
   const settings = loadSettings();
-  const data = findItems(fraDptData, settings.nbQuestions);
+  const data = findItems(fraDptData, settings);
   return new ExercicePreviewState(data, 0);
 }

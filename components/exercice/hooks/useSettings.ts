@@ -1,4 +1,9 @@
-import { loadSettings, saveSettings, type Settings } from "@/utils/settings";
+import {
+  isValidSettings,
+  loadSettings,
+  saveSettings,
+  type Settings,
+} from "@/utils/settings";
 import { useEffect, useState } from "react";
 
 export default function useSettings(): [
@@ -10,8 +15,10 @@ export default function useSettings(): [
   useEffect(() => setSettings(loadSettings()), []);
 
   function updateSettings(newSettings: Settings) {
-    saveSettings(newSettings);
-    setSettings(newSettings);
+    if (isValidSettings(settings)) {
+      saveSettings(newSettings);
+      setSettings(newSettings);
+    }
   }
 
   return [settings, updateSettings];

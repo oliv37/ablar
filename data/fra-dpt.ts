@@ -1,3 +1,5 @@
+import { Category } from "@/utils/settings-category";
+
 export type FraDpt = {
   id: string;
   name: string;
@@ -101,6 +103,14 @@ const data: FraDpt[] = [
   { id: "93", name: "Seine-Saint-Denis", city: "Bobigny" },
   { id: "94", name: "Val-de-Marne", city: "Créteil" },
   { id: "95", name: "Val-d'Oise", city: "Pontoise" },
+];
+
+export const categories: Category[] = [
+  { from: 0, to: 20 },
+  { from: 21, to: 40 },
+  { from: 41, to: 60 },
+  { from: 61, to: 80 },
+  { from: 81 },
 ];
 
 export default data;

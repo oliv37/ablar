@@ -3,20 +3,31 @@
 import { useContext } from "react";
 import ExerciceStateContext from "../context/ExerciceStateContext";
 import useSettings from "../hooks/useSettings";
-import useNbQuestions from "../hooks/useNbQuestions";
-
-const nbQuestionsValues = [5, 10, 15];
+import { Settings, isValidSettings, nbQuestionsValues } from "@/utils/settings";
+import { categories as allCategories } from "@/data/fra-dpt";
+import SelectField from "./form/SelectField";
+import CheckboxFields from "./form/CheckboxFields";
+import CategoryCheckboxLabel from "./form/CategoryCheckboxLabel";
+import { filterCategories, hasCategory } from "@/utils/settings-category";
 
 export default function ExerciceSettings() {
   const [_, dispatch] = useContext(ExerciceStateContext);
   const [settings, updateSettings] = useSettings();
-  const [nbQuestions, setNbQuestions] = useNbQuestions(settings);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (nbQuestions != undefined) {
-      updateSettings({ nbQuestions });
+    const formData = new FormData(e.currentTarget);
+    const newSettrings: Settings = {
+      nbQuestions: Number(formData.get("nbQuestions")),
+      categories: filterCategories(
+        allCategories,
+        formData.getAll("categories")
+      ),
+    };
+
+    if (isValidSettings(newSettrings)) {
+      updateSettings(newSettrings);
       dispatch("RELOAD_STATE");
     }
   }
@@ -26,23 +37,25 @@ export default function ExerciceSettings() {
       <div className="w-full max-w-screen-md">
         <h3 className="font-bold text-2xl">Settings</h3>
         <form onSubmit={handleSubmit}>
-          <div className="my-8">
-            <label htmlFor="nbQuestions" className="pr-4">
-              Number of questions
-            </label>
-            <select
-              id="nbQuestions"
-              className="p-2"
-              value={nbQuestions}
-              onChange={(e) => setNbQuestions(Number(e.target.value))}
-            >
-              {nbQuestionsValues.map((nbQuestionsValue) => (
-                <option key={nbQuestionsValue} value={nbQuestionsValue}>
-                  {nbQuestionsValue}
-                </option>
-              ))}
-            </select>
-          </div>
+          <SelectField
+            id="nbQuestions"
+            name="nbQuestions"
+            label="Number of questions"
+            defaultValue={settings.nbQuestions}
+            options={nbQuestionsValues.map((v) => ({
+              label: v.toString(),
+              value: v,
+            }))}
+          />
+          <CheckboxFields
+            id="category"
+            name="categories"
+            checkboxes={allCategories.map((category, idx) => ({
+              label: <CategoryCheckboxLabel category={category} />,
+              value: idx,
+              defaultChecked: hasCategory(settings.categories, category),
+            }))}
+          />
           <button
             type="submit"
             className="py-1 px-2 border-2 border-foreground"

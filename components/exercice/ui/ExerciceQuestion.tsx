@@ -52,34 +52,39 @@ export default function Question({ data, index }: Props) {
   }
 
   return (
-    <div className="flex justify-center items-center">
-      <input
-        type="text"
-        placeholder="id"
-        className="m-2 w-20 border-b-2 border-foreground border-solid"
-        disabled={id == item?.id}
-        value={id}
-        onChange={handleChange(setId, item?.id)}
-        ref={idRef}
-      />
-      <input
-        type="text"
-        placeholder="name"
-        className="m-2 w-44 border-b-2 border-foreground border-solid"
-        disabled={name == item?.name}
-        value={name}
-        onChange={handleChange(setName, item?.name)}
-        ref={nameRef}
-      />
-      <input
-        type="text"
-        placeholder="city"
-        className="m-2 w-44 border-b-2 border-foreground border-solid"
-        disabled={city == item?.city}
-        value={city}
-        onChange={handleChange(setCity, item?.city)}
-        ref={cityRef}
-      />
+    <div>
+      <div className="flex justify-center items-center">
+        <input
+          type="text"
+          placeholder="id"
+          className="m-2 w-20 border-b-2 border-foreground border-solid"
+          disabled={id == item?.id}
+          value={id}
+          onChange={handleChange(setId, item?.id)}
+          ref={idRef}
+        />
+        <input
+          type="text"
+          placeholder="name"
+          className="m-2 w-44 border-b-2 border-foreground border-solid"
+          disabled={name == item?.name}
+          value={name}
+          onChange={handleChange(setName, item?.name)}
+          ref={nameRef}
+        />
+        <input
+          type="text"
+          placeholder="city"
+          className="m-2 w-44 border-b-2 border-foreground border-solid"
+          disabled={city == item?.city}
+          value={city}
+          onChange={handleChange(setCity, item?.city)}
+          ref={cityRef}
+        />
+      </div>
+      <div className="mt-2 text-center">
+        {index + 1} / {data.length}
+      </div>
     </div>
   );
 }
