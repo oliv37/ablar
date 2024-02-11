@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import type AbstractExerciceState from "../state/AbstractExerciceState";
+import type AbstractExerciceState from "../state/abstract-exercice-state";
 import createExerciceState from "../utils/create-exercice-state";
 
 export default function useExerciceState(): [

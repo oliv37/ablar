@@ -1,5 +1,5 @@
-import { type ExerciceStateContextType } from "../context/ExerciceStateContext";
-import type AbstractExerciceState from "../state/AbstractExerciceState";
+import { type ExerciceStateContextType } from "../context/exercice-state-context";
+import type AbstractExerciceState from "../state/abstract-exercice-state";
 import { useMemo } from "react";
 import createDispatcher from "../utils/create-dispatcher";
 

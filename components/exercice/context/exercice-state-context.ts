@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import AbstractExerciceState from "../state/AbstractExerciceState";
+import AbstractExerciceState from "../state/abstract-exercice-state";
 
 export type ActionType = "NEXT_STATE" | "PREV_STATE" | "RELOAD_STATE";
 

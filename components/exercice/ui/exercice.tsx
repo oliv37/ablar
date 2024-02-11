@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect } from "react";
-import ExerciceStateContext from "../context/ExerciceStateContext";
+import ExerciceStateContext from "../context/exercice-state-context";
 
 type Props = {
   className?: string;

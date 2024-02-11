@@ -1,7 +1,7 @@
 import findItems from "@/utils/find-items";
 import { loadSettings } from "@/utils/settings";
-import ExercicePreviewState from "../state/ExercicePreviewState";
-import AbstractExerciceState from "../state/AbstractExerciceState";
+import ExercicePreviewState from "../state/exercice-preview-state";
+import AbstractExerciceState from "../state/abstract-exercice-state";
 import fraDptData from "@/data/fra-dpt";
 
 export default function createExerciceState(): AbstractExerciceState {

@@ -1,7 +1,7 @@
 "use client";
 
 import { type KeyboardEvent, useRef, useContext, useEffect } from "react";
-import ExerciceStateContext from "../context/ExerciceStateContext";
+import ExerciceStateContext from "../context/exercice-state-context";
 
 type Props = {
   children: React.ReactNode;

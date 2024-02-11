@@ -2,7 +2,7 @@
 
 import { FraDpt } from "@/data/fra-dpt";
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
-import ExerciceStateContext from "../context/ExerciceStateContext";
+import ExerciceStateContext from "../context/exercice-state-context";
 
 type Props = {
   data: FraDpt[];

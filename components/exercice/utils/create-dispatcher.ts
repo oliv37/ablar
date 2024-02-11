@@ -1,5 +1,5 @@
-import { type ActionType } from "../context/ExerciceStateContext";
-import type AbstractExerciceState from "../state/AbstractExerciceState";
+import { type ActionType } from "../context/exercice-state-context";
+import type AbstractExerciceState from "../state/abstract-exercice-state";
 import createExerciceState from "./create-exercice-state";
 
 export default function createDispatcher(

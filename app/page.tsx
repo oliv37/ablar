@@ -1,8 +1,8 @@
-import Exercice from "@/components/exercice/ui/Exercice";
-import ExerciceWrapper from "@/components/exercice/ui/ExerciceWrapper";
-import ExerciceStateProvider from "@/components/exercice/provider/ExerciceStateProvider";
-import ExerciceSettings from "@/components/exercice/ui/ExerciceSettings";
-import FraDptMap from "@/components/maps/FraDptMap";
+import ExerciceStateProvider from "@/components/exercice/provider/exercice-state-provider";
+import Exercice from "@/components/exercice/ui/exercice";
+import ExerciceSettings from "@/components/exercice/ui/exercice-settings";
+import ExerciceWrapper from "@/components/exercice/ui/exercice-wrapper";
+import FraDptMap from "@/components/maps/fra-dpt-map";
 
 export default function Home() {
   return (

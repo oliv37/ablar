@@ -1,5 +1,5 @@
-import ExerciceQuestion from "../ui/ExerciceQuestion";
-import AbstractExerciceState from "./AbstractExerciceState";
+import ExerciceQuestion from "../ui/exercice-question";
+import AbstractExerciceState from "./abstract-exercice-state";
 
 export default class ExerciceQuestionState extends AbstractExerciceState {
   prevState(): AbstractExerciceState | undefined {

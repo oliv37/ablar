@@ -3,7 +3,7 @@
 import { FraDpt } from "@/data/fra-dpt";
 import clsx from "@/utils/clsx";
 import { useContext } from "react";
-import ExerciceStateContext from "../context/ExerciceStateContext";
+import ExerciceStateContext from "../context/exercice-state-context";
 
 type Props = {
   data: FraDpt[];

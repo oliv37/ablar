@@ -1,13 +1,13 @@
 "use client";
 
 import { useContext } from "react";
-import ExerciceStateContext from "../context/ExerciceStateContext";
-import useSettings from "../hooks/useSettings";
+import ExerciceStateContext from "../context/exercice-state-context";
+import useSettings from "../hooks/use-settings";
 import { Settings, isValidSettings, nbQuestionsValues } from "@/utils/settings";
 import { categories as allCategories } from "@/data/fra-dpt";
-import SelectField from "./form/SelectField";
-import CheckboxFields from "./form/CheckboxFields";
-import CategoryCheckboxLabel from "./form/CategoryCheckboxLabel";
+import SelectField from "./form/select-field";
+import CheckboxFields from "./form/checkbox-fields";
+import CategoryCheckboxLabel from "./form/category-checkbox-label";
 import { filterCategories, hasCategory } from "@/utils/settings-category";
 
 export default function ExerciceSettings() {
