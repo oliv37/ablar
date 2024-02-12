@@ -13,7 +13,7 @@ export default function ExerciceWrapper({ children, className }: Props) {
   const [exerciceState, dispatch] = useContext(ExerciceStateContext);
   useEffect(() => {
     mainRef.current?.focus();
-  }, [exerciceState?.data]);
+  }, [exerciceState?.items]);
 
   function handleKeyDown(e: KeyboardEvent<HTMLDivElement>) {
     if (e.code === "ArrowLeft") {

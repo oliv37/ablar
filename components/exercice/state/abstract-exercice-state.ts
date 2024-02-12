@@ -1,10 +1,10 @@
-import { FraDpt } from "@/data/fra-dpt";
+import { type Item } from "../../../types";
 
 export default abstract class AbstractExerciceState {
-  constructor(public data: FraDpt[] = [], public index: number = 0) {}
+  constructor(public items: Item[] = [], public index: number = 0) {}
 
-  get item(): FraDpt {
-    return this.data[this.index];
+  get item(): Item {
+    return this.items[this.index];
   }
 
   abstract prevState(): AbstractExerciceState | undefined;

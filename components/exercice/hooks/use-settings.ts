@@ -1,9 +1,5 @@
-import {
-  isValidSettings,
-  loadSettings,
-  saveSettings,
-  type Settings,
-} from "@/utils/settings";
+import { type Settings } from "@/types";
+import { isValidSettings, loadSettings, saveSettings } from "@/utils/settings";
 import { useEffect, useState } from "react";
 
 export default function useSettings(): [

@@ -1,20 +1,17 @@
-import data from "@/data/fra-dpt";
-import { type Category } from "@/utils/settings-category";
+import { type Item } from "../../../../types";
 
 type Props = {
-  category: Category;
+  from: Item;
+  to: Item;
 };
 
-export default function CategoryCheckboxLabel({ category }: Props) {
-  const itemFrom = data[category.from];
-  const itemTo = data[category.to || data.length - 1];
-
+export default function CategoryCheckboxLabel({ from, to }: Props) {
   return (
     <>
-      <span className="font-bold">{itemFrom.id}</span>
-      {` ${itemFrom.name} - `}
-      <span className="font-bold">{itemTo.id}</span>
-      {` ${itemTo.name}`}
+      <span className="font-bold">{from.id}</span>
+      {` ${from.name} - `}
+      <span className="font-bold">{to.id}</span>
+      {` ${to.name}`}
     </>
   );
 }

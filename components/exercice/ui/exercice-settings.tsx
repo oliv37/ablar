@@ -3,15 +3,16 @@
 import { useContext } from "react";
 import ExerciceStateContext from "../context/exercice-state-context";
 import useSettings from "../hooks/use-settings";
-import { Settings, isValidSettings, nbQuestionsValues } from "@/utils/settings";
-import { categories as allCategories } from "@/data/fra-dpt";
+import { isValidSettings, nbQuestionsValues } from "@/utils/settings";
 import SelectField from "./form/select-field";
 import CheckboxFields from "./form/checkbox-fields";
 import CategoryCheckboxLabel from "./form/category-checkbox-label";
-import { filterCategories, hasCategory } from "@/utils/settings-category";
+import { type Settings } from "../../../types";
+import DataContext from "../context/data-context";
 
 export default function ExerciceSettings() {
   const [_, dispatch] = useContext(ExerciceStateContext);
+  const { items, categories: allCategories } = useContext(DataContext);
   const [settings, updateSettings] = useSettings();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -20,10 +21,7 @@ export default function ExerciceSettings() {
     const formData = new FormData(e.currentTarget);
     const newSettrings: Settings = {
       nbQuestions: Number(formData.get("nbQuestions")),
-      categories: filterCategories(
-        allCategories,
-        formData.getAll("categories")
-      ),
+      categoryIndexes: formData.getAll("categories").map((idx) => Number(idx)),
     };
 
     if (isValidSettings(newSettrings)) {
@@ -51,9 +49,16 @@ export default function ExerciceSettings() {
             id="category"
             name="categories"
             checkboxes={allCategories.map((category, idx) => ({
-              label: <CategoryCheckboxLabel category={category} />,
+              label: (
+                <CategoryCheckboxLabel
+                  from={items[category.from]}
+                  to={items[category.to || items.length - 1]}
+                />
+              ),
               value: idx,
-              defaultChecked: hasCategory(settings.categories, category),
+              defaultChecked:
+                !settings.categoryIndexes?.length ||
+                settings.categoryIndexes.includes(idx),
             }))}
           />
           <button

@@ -1,15 +1,21 @@
 "use client";
 
-import { FraDpt } from "@/data/fra-dpt";
-import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import {
+  type ChangeEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ExerciceStateContext from "../context/exercice-state-context";
+import { type Item } from "../../../types";
 
 type Props = {
-  data: FraDpt[];
+  items: Item[];
   index: number;
 };
 
-export default function Question({ data, index }: Props) {
+export default function Question({ items, index }: Props) {
   const [_, dispatch] = useContext(ExerciceStateContext);
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -17,23 +23,23 @@ export default function Question({ data, index }: Props) {
   const idRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const cityRef = useRef<HTMLInputElement>(null);
-  const item = data[index];
+  const item = items[index];
 
   useEffect(() => {
     focus();
   }, []);
 
   useEffect(() => {
-    const item = data[index];
+    const item = items[index];
     if (id === item?.id && name === item?.name && city === item?.city) {
-      const isLastIndex = index >= data.length - 1;
+      const isLastIndex = index >= items.length - 1;
       if (isLastIndex) {
         dispatch("RELOAD_STATE");
       } else {
         dispatch("NEXT_STATE");
       }
     }
-  }, [id, name, city, data, index, dispatch]);
+  }, [id, name, city, items, index, dispatch]);
 
   function focus(currentInput?: HTMLInputElement) {
     [idRef.current, nameRef.current, cityRef.current]
@@ -83,7 +89,7 @@ export default function Question({ data, index }: Props) {
         />
       </div>
       <div className="mt-2 text-center">
-        {index + 1} / {data.length}
+        {index + 1} / {items.length}
       </div>
     </div>
   );

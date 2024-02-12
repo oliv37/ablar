@@ -1,7 +1,6 @@
 "use client";
 
 import ExerciceStateContext from "../context/exercice-state-context";
-import useExerciceState from "../hooks/use-exercice-state";
 import useExerciceStateContextValue from "../hooks/use-exercice-state-context-value";
 
 export default function ExerciceStateProvider({
@@ -9,12 +8,7 @@ export default function ExerciceStateProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [exerciceState, setExerciceState] = useExerciceState();
-  const contextValue = useExerciceStateContextValue(
-    exerciceState,
-    setExerciceState
-  );
-
+  const contextValue = useExerciceStateContextValue();
   return (
     <ExerciceStateContext.Provider value={contextValue}>
       {children}

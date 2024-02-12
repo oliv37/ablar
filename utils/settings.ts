@@ -1,11 +1,6 @@
-import { Category } from "./settings-category";
+import { type Settings } from "@/types";
 
 const SETTINGS_KEY = "settings";
-
-export type Settings = {
-  nbQuestions: number;
-  categories?: Category[];
-};
 
 const DEFAULT_SETTINGS: Settings = {
   nbQuestions: 10,
@@ -35,7 +30,7 @@ export function isValidSettings(settings?: Settings): settings is Settings {
   return (
     settings != undefined &&
     settings.nbQuestions > 0 &&
-    (!settings.categories || settings?.categories?.length > 0)
+    (!settings.categoryIndexes || settings.categoryIndexes.length > 0)
   );
 }
 

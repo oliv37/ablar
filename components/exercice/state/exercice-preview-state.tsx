@@ -5,15 +5,15 @@ import ExerciceQuestionState from "./exercice-question-state";
 export default class ExercicePreviewState extends AbstractExerciceState {
   prevState(): AbstractExerciceState | undefined {
     if (this.index > 0) {
-      return new ExercicePreviewState(this.data, this.index - 1);
+      return new ExercicePreviewState(this.items, this.index - 1);
     }
   }
 
   nextState(): AbstractExerciceState | undefined {
-    const isLastIndex = this.index >= this.data.length - 1;
+    const isLastIndex = this.index >= this.items.length - 1;
     return isLastIndex
-      ? new ExerciceQuestionState(this.data, 0)
-      : new ExercicePreviewState(this.data, this.index + 1);
+      ? new ExerciceQuestionState(this.items, 0)
+      : new ExercicePreviewState(this.items, this.index + 1);
   }
 
   isArrowKeysEnabled(): boolean {
@@ -21,6 +21,6 @@ export default class ExercicePreviewState extends AbstractExerciceState {
   }
 
   render() {
-    return <ExercicePreview data={this.data} index={this.index} />;
+    return <ExercicePreview items={this.items} index={this.index} />;
   }
 }

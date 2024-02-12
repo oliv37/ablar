@@ -1,12 +1,6 @@
-import { Category } from "@/utils/settings-category";
+import { type Data, type Category, type Item } from "@/types";
 
-export type FraDpt = {
-  id: string;
-  name: string;
-  city: string;
-};
-
-const data: FraDpt[] = [
+export const items: Item[] = [
   { id: "01", name: "Ain", city: "Bourg-en-Bresse" },
   { id: "02", name: "Aisne", city: "Laon" },
   { id: "03", name: "Allier", city: "Moulins" },
@@ -113,4 +107,7 @@ export const categories: Category[] = [
   { from: 81 },
 ];
 
-export default data;
+export const data: Data = {
+  items,
+  categories,
+};

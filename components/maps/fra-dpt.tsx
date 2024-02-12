@@ -1,10 +1,8 @@
-import clsx from "@/utils/clsx";
-
 type Props = {
   className?: string;
 };
 
-export default function FraDptMap({ className }: Props) {
+export default function FraDpt({ className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
