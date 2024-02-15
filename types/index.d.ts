@@ -1,3 +1,8 @@
+export type Option = {
+  label: string;
+  value: string | number;
+};
+
 export type Item = {
   id: string;
   name: string;
@@ -17,4 +22,6 @@ export type Settings = {
 export type Data = {
   items: Item[];
   categories: Category[];
+  defaultSettings: Settings;
+  nbQuestionsOptions: Option[];
 };

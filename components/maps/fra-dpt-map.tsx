@@ -2,7 +2,7 @@ type Props = {
   className?: string;
 };
 
-export default function FraDpt({ className }: Props) {
+export default function FraDptMap({ className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

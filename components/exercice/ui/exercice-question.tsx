@@ -26,7 +26,7 @@ export default function Question({ items, index }: Props) {
   const item = items[index];
 
   useEffect(() => {
-    focus();
+    focusNextInput();
   }, []);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function Question({ items, index }: Props) {
     }
   }, [id, name, city, items, index, dispatch]);
 
-  function focus(currentInput?: HTMLInputElement) {
+  function focusNextInput(currentInput?: HTMLInputElement) {
     [idRef.current, nameRef.current, cityRef.current]
       .find((input) => input && input !== currentInput && !input.disabled)
       ?.focus();
@@ -52,7 +52,7 @@ export default function Question({ items, index }: Props) {
       const newValue = e.target.value;
       setValue(newValue);
       if (newValue === answer) {
-        focus(e.target);
+        focusNextInput(e.target);
       }
     };
   }

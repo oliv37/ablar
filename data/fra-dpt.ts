@@ -1,6 +1,12 @@
-import { type Data, type Category, type Item } from "@/types";
+import {
+  type Data,
+  type Category,
+  type Item,
+  type Settings,
+  type Option,
+} from "@/types";
 
-export const items: Item[] = [
+const items: Item[] = [
   { id: "01", name: "Ain", city: "Bourg-en-Bresse" },
   { id: "02", name: "Aisne", city: "Laon" },
   { id: "03", name: "Allier", city: "Moulins" },
@@ -99,7 +105,7 @@ export const items: Item[] = [
   { id: "95", name: "Val-d'Oise", city: "Pontoise" },
 ];
 
-export const categories: Category[] = [
+const categories: Category[] = [
   { from: 0, to: 20 },
   { from: 21, to: 40 },
   { from: 41, to: 60 },
@@ -107,7 +113,19 @@ export const categories: Category[] = [
   { from: 81 },
 ];
 
+const defaultSettings: Settings = {
+  nbQuestions: 10,
+};
+
+const nbQuestionsOptions: Option[] = [
+  { label: "5", value: 5 },
+  { label: "10", value: 10 },
+  { label: "15", value: 15 },
+];
+
 export const data: Data = {
   items,
   categories,
+  defaultSettings,
+  nbQuestionsOptions,
 };

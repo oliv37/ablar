@@ -2,20 +2,9 @@ import { type Settings } from "@/types";
 
 const SETTINGS_KEY = "settings";
 
-const DEFAULT_SETTINGS: Settings = {
-  nbQuestions: 10,
-};
-
-export const nbQuestionsValues = [5, 10, 15];
-
-export function loadSettings(): Settings {
-  try {
-    const settings = localStorage.getItem(SETTINGS_KEY);
-    return parseSettings(settings);
-  } catch (e) {
-    console.error(e);
-    return DEFAULT_SETTINGS;
-  }
+export function loadSettings(): Settings | undefined {
+  const settings = localStorage.getItem(SETTINGS_KEY);
+  return parseSettings(settings);
 }
 
 export function saveSettings(settings: Settings): void {
@@ -34,10 +23,16 @@ export function isValidSettings(settings?: Settings): settings is Settings {
   );
 }
 
-function parseSettings(settingsStr: string | null): Settings {
-  const settings = settingsStr
-    ? (JSON.parse(settingsStr) as Settings)
-    : undefined;
+function parseSettings(settingsStr: string | null): Settings | undefined {
+  if (!settingsStr) {
+    return;
+  }
 
-  return isValidSettings(settings) ? settings : DEFAULT_SETTINGS;
+  try {
+    const settings = JSON.parse(settingsStr) as Settings;
+    return isValidSettings(settings) ? settings : undefined;
+  } catch (e) {
+    console.error(e);
+    return;
+  }
 }

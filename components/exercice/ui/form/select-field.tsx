@@ -1,7 +1,4 @@
-type Option = {
-  label: string;
-  value: string | number;
-};
+import { type Option } from "@/types";
 
 type Props = {
   id: string;
