@@ -1,9 +1,6 @@
 import { createContext } from "react";
 import { type Settings } from "@/types";
-
-const EMPTY_SETTINGS: Settings = {
-  nbQuestions: 0,
-};
+import { EMPTY_SETTINGS } from "@/utils/settings";
 
 export type SettingsContextType = [
   Settings | undefined,

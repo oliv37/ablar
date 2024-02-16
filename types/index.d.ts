@@ -16,7 +16,7 @@ export type Category = {
 
 export type Settings = {
   nbQuestions: number;
-  categoryIndexes?: number[];
+  categoryIndexes: number[] | "all";
 };
 
 export type Data = {

@@ -6,7 +6,11 @@ import SettingsContext, {
   SettingsContextType,
 } from "../context/settings-context";
 import { useContext, useEffect, useMemo, useState } from "react";
-import { isValidSettings, loadSettings, saveSettings } from "@/utils/settings";
+import {
+  isValidSettings,
+  loadSettingsOrDefault,
+  saveSettings,
+} from "@/utils/settings";
 
 export default function SettingsProvider({
   children,
@@ -17,7 +21,7 @@ export default function SettingsProvider({
   const [settings, setSettings] = useState<Settings>();
 
   useEffect(() => {
-    setSettings(loadSettings() || defaultSettings);
+    setSettings(loadSettingsOrDefault(defaultSettings));
   }, [defaultSettings]);
 
   const contextValue = useMemo<SettingsContextType>(() => {

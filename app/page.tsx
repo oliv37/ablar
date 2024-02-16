@@ -6,15 +6,15 @@ import ExerciceSettings from "@/components/exercice/ui/exercice-settings";
 import ExerciceWrapper from "@/components/exercice/ui/exercice-wrapper";
 
 export default async function Home() {
-  const id = "fra-dpt";
+  const id = "usa";
   const { default: Map } = await import(`@/components/maps/${id}-map`);
   const { data } = await import(`@/data/${id}`);
   return (
     <DataProvider value={data}>
       <SettingsProvider>
         <ExerciceStateProvider>
-          <ExerciceWrapper className="min-h-screen flex flex-col outline-none">
-            <Map className="map flex-1 self-center min-h-64" />
+          <ExerciceWrapper className="h-screen min-h-96 flex flex-col outline-none">
+            <Map className="map flex-1 w-full h-full self-center min-h-60" />
             <Exercice className="p-6 min-h-36" />
           </ExerciceWrapper>
           <aside className="flex justify-center mt-5 mb-20">

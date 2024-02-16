@@ -11,7 +11,7 @@ export default function Exercice({ className }: Props) {
   const [exerciceState] = useContext(ExerciceStateContext);
 
   useEffect(() => {
-    const id = exerciceState?.item.id;
+    const id = exerciceState?.item?.id;
     if (id) {
       document
         .querySelector(`svg.map .fill-foreground`)

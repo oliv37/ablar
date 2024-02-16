@@ -2,9 +2,14 @@ import { type Settings } from "@/types";
 
 const SETTINGS_KEY = "settings";
 
-export function loadSettings(): Settings | undefined {
+export const EMPTY_SETTINGS: Settings = {
+  nbQuestions: 0,
+  categoryIndexes: "all",
+};
+
+export function loadSettingsOrDefault(defaultSettings: Settings): Settings {
   const settings = localStorage.getItem(SETTINGS_KEY);
-  return parseSettings(settings);
+  return parseSettings(settings) || defaultSettings;
 }
 
 export function saveSettings(settings: Settings): void {
@@ -19,7 +24,7 @@ export function isValidSettings(settings?: Settings): settings is Settings {
   return (
     settings != undefined &&
     settings.nbQuestions > 0 &&
-    (!settings.categoryIndexes || settings.categoryIndexes.length > 0)
+    (settings.categoryIndexes === "all" || settings.categoryIndexes?.length > 0)
   );
 }
 

@@ -1,15 +1,17 @@
 import { type Item, type Category, type Settings, type Data } from "@/types";
-import isUndefinedOrEmpty from "./is-undefined-or-empty";
 
-export default function findItems(data: Data, settings?: Settings) {
-  const { nbQuestions: nbItems, categoryIndexes } =
-    settings || data.defaultSettings;
-  const items: Item[] = getItemsInCategories(
-    data.items,
-    data.categories,
+export default function findItems(
+  items: Item[],
+  categories: Category[],
+  settings: Settings
+) {
+  const { nbQuestions: nbItems, categoryIndexes } = settings;
+  const itemsInCategories: Item[] = getItemsInCategories(
+    items,
+    categories,
     categoryIndexes
   );
-  return findItemsRecursively(items, nbItems);
+  return findItemsRecursively(itemsInCategories, nbItems);
 }
 
 function findItemsRecursively(items: Item[], nbItems = 5, res: Item[] = []) {
@@ -28,9 +30,9 @@ function findItemsRecursively(items: Item[], nbItems = 5, res: Item[] = []) {
 function getItemsInCategories(
   items: Item[],
   categories: Category[],
-  categoryIndexes?: number[]
+  categoryIndexes: number[] | "all"
 ): Item[] {
-  if (isUndefinedOrEmpty(categoryIndexes)) {
+  if (categoryIndexes === "all") {
     return items;
   }
 

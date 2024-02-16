@@ -115,6 +115,7 @@ const categories: Category[] = [
 
 const defaultSettings: Settings = {
   nbQuestions: 10,
+  categoryIndexes: "all",
 };
 
 const nbQuestionsOptions: Option[] = [

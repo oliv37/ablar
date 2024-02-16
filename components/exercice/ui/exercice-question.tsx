@@ -15,7 +15,7 @@ type Props = {
   index: number;
 };
 
-export default function Question({ items, index }: Props) {
+export default function ExerciceQuestion({ items, index }: Props) {
   const [_, dispatch] = useContext(ExerciceStateContext);
   const [id, setId] = useState("");
   const [name, setName] = useState("");

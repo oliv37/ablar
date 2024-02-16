@@ -1,12 +1,11 @@
 import { createContext } from "react";
 import { type Data } from "@/types";
+import { EMPTY_SETTINGS } from "@/utils/settings";
 
 const EMPTY_DATA: Data = {
   items: [],
   categories: [],
-  defaultSettings: {
-    nbQuestions: 0,
-  },
+  defaultSettings: EMPTY_SETTINGS,
   nbQuestionsOptions: [],
 };
 
