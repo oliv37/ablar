@@ -4,8 +4,14 @@ import SettingsProvider from "@/components/exercice/provider/settings-provider";
 import Exercice from "@/components/exercice/ui/exercice";
 import ExerciceSettings from "@/components/exercice/ui/exercice-settings";
 import ExerciceWrapper from "@/components/exercice/ui/exercice-wrapper";
+import { type Metadata } from "next";
 
-export default async function Home() {
+export const metadata: Metadata = {
+  title: "Ablar - Geo",
+  description: "Ablar Geography",
+};
+
+export default async function Page() {
   const id = "usa";
   const { default: Map } = await import(`@/components/maps/${id}-map`);
   const { data } = await import(`@/data/${id}`);

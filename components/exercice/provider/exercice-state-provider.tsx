@@ -8,7 +8,7 @@ import AbstractExerciceState from "../state/abstract-exercice-state";
 import DataContext from "../context/data-context";
 import findItems from "@/utils/find-items";
 import ExercicePreviewState from "../state/exercice-preview-state";
-import createDispatcher from "../utils/create-dispatcher";
+import { createDispatcher } from "../utils/dispatcher";
 import { loadSettingsOrDefault } from "@/utils/settings";
 import useEffectOnce from "@/hooks/use-effect-once";
 

@@ -30,12 +30,9 @@ const DEFAULT_INPUT_REFS: Record<FieldName, HTMLInputElement | null> = {
 const KEYBOARD_LETTERS = ["É", "Î"];
 
 function computeHelpValue(inputValue: string, answer: string): string {
-  for (let i = 0; i <= inputValue.length; i++) {
-    if (
-      i >= inputValue.length ||
-      i >= answer.length ||
-      inputValue.charAt(i) !== answer.charAt(i)
-    ) {
+  const maxLength = Math.min(inputValue.length, answer.length);
+  for (let i = 0; i <= maxLength; i++) {
+    if (i === maxLength || inputValue.charAt(i) !== answer.charAt(i)) {
       return answer.substring(0, Math.min(i + 1, answer.length));
     }
   }

@@ -1,7 +1,7 @@
 import { type ActionType } from "../context/exercice-state-context";
 import type AbstractExerciceState from "../state/abstract-exercice-state";
 
-export default function createDispatcher(
+export function createDispatcher(
   exerciceState: AbstractExerciceState | undefined,
   setExerciceState: (state: AbstractExerciceState) => void,
   reloadExerciceState: () => void
