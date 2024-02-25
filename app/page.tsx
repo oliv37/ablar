@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const id = "usa";
+  const id = "eu";
   const { default: Map } = await import(`@/components/maps/${id}-map`);
   const { data } = await import(`@/data/${id}`);
   return (

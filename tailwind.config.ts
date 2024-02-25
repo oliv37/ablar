@@ -10,6 +10,7 @@ const config: Config = {
       colors: {
         foreground: "rgb(var(--foreground-rgb))",
         background: "rgb(var(--background-rgb))",
+        "background-subtle-1": "rgb(var(--background-subtle-1-rgb))",
       },
     },
   },
